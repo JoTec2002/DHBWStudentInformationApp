@@ -12,6 +12,7 @@ final Map<ScheduleEntryType, ColorDelegate> scheduleEntryTypeColorMapping = {
   ScheduleEntryType.Exam: colorScheduleEntryExam,
   ScheduleEntryType.Online: colorScheduleEntryOnline,
   ScheduleEntryType.Unknown: colorScheduleEntryUnknown,
+  ScheduleEntryType.StudyDay: colorScheduleEntryStudyDay,
 };
 
 final Map<ScheduleEntryType, TextDelegate> scheduleEntryTypeTextMapping = {
@@ -21,6 +22,7 @@ final Map<ScheduleEntryType, TextDelegate> scheduleEntryTypeTextMapping = {
   ScheduleEntryType.Exam: (c) => L.of(c).scheduleEntryTypeExam,
   ScheduleEntryType.Online: (c) => L.of(c).scheduleEntryTypeOnline,
   ScheduleEntryType.Unknown: (c) => L.of(c).scheduleEntryTypeUnknown,
+  ScheduleEntryType.StudyDay: (c) => L.of(c).scheduleEntryTypeStudyDay
 };
 
 Color scheduleEntryTypeToColor(

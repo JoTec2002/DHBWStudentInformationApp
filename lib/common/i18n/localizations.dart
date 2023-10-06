@@ -54,6 +54,9 @@ class L {
   String get scheduleEntryTypePublicHoliday =>
       _getValue("scheduleEntryTypePublicHoliday");
 
+  String get scheduleEntryTypeStudyDay =>
+      _getValue("scheduleEntryTypeStudyDay");
+
   String get scheduleEntryTypeClass => _getValue("scheduleEntryTypeClass");
 
   String get scheduleEntryTypeExam => _getValue("scheduleEntryTypeExam");

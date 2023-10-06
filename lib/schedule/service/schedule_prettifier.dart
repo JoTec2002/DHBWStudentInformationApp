@@ -45,7 +45,7 @@ class SchedulePrettifier {
     var details = entry.details ?? "";
 
     var titleRegex =
-    RegExp("[A-Z]{3,}-?[A-Z]+[0-9]*[A-Z]*[0-9]*[\/]?[A-Z]*[0-9]*[ ]*-?");
+    RegExp("[A-Z]{3,}-?[A-Z]+[0-9]+[A-Z]*[0-9]*[\/]?[A-Z]*[0-9]*[ ]*-?");
     var match = titleRegex.firstMatch(entry.title);
 
     if (match != null && match.start == 0) {

@@ -4,6 +4,7 @@ enum ScheduleEntryType {
   Online,
   PublicHoliday,
   Exam,
+  StudyDay,
 }
 
 class ScheduleEntry {

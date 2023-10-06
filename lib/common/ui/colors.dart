@@ -27,6 +27,11 @@ Color colorScheduleEntryUnknown(BuildContext context) =>
         ? const Color(0xffcbcbcb)
         : const Color(0xff515151);
 
+Color colorScheduleEntryStudyDay(BuildContext context) =>
+    Theme.of(context).brightness == Brightness.light
+        ? const Color(0xffcbcbcb)
+        : const Color(0xff515151);
+
 Color colorScheduleGridGridLines(BuildContext context) =>
     Theme.of(context).brightness == Brightness.light
         ? const Color(0xffe0e0e0)
