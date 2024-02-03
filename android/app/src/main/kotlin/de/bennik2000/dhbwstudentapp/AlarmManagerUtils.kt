@@ -11,7 +11,7 @@ import org.threeten.bp.OffsetDateTime
 class AlarmManagerUtils {
     companion object {
         fun scheduleIntentAtExactTime(context: Context, intent: Intent, scheduleAt: LocalDateTime) {
-            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
             
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
@@ -44,7 +44,7 @@ class AlarmManagerUtils {
         }
         
         fun cancelIntent(context: Context, intent: Intent) {
-            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
             
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             alarmManager.cancel(pendingIntent)

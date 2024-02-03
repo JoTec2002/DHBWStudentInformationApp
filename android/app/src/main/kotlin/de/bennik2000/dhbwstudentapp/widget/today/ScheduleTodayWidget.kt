@@ -39,7 +39,7 @@ class ScheduleTodayWidget : AppWidgetProvider() {
         val pendingIntent = PendingIntent.getActivity(context,
                 0,
                 Intent(context, MainActivity::class.java),
-                0)
+                PendingIntent.FLAG_IMMUTABLE)
         views.setOnClickPendingIntent(R.id.widget_title, pendingIntent)
 
         if(WidgetHelper(context).isWidgetEnabled()) {
