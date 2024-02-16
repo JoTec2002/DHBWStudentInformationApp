@@ -32,7 +32,9 @@ class ScheduleEntryEntity extends DatabaseEntity {
         professor: map["professor"],
         title: map["title"],
         room: map["room"],
-        type: ScheduleEntryType.values[map["type"]]);
+        type: ScheduleEntryType.values[map["type"]],
+        color: map["color"]
+    );
   }
 
   @override
@@ -45,7 +47,8 @@ class ScheduleEntryEntity extends DatabaseEntity {
       "professor": _scheduleEntry.professor ?? "",
       "room": _scheduleEntry.room ?? "",
       "title": _scheduleEntry.title ?? "",
-      "type": _scheduleEntry.type?.index
+      "type": _scheduleEntry.type?.index,
+      "color": _scheduleEntry.color ?? ""
     };
   }
 

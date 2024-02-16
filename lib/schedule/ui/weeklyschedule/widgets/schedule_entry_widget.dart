@@ -1,6 +1,7 @@
 import 'package:dhbwstudentapp/common/ui/schedule_entry_type_mappings.dart';
 import 'package:dhbwstudentapp/common/ui/text_styles.dart';
 import 'package:dhbwstudentapp/schedule/model/schedule_entry.dart';
+import 'package:dhbwstudentapp/common/ui/hex_color.dart';
 import 'package:flutter/material.dart';
 
 typedef ScheduleEntryTapCallback = Function(ScheduleEntry entry);
@@ -14,10 +15,17 @@ class ScheduleEntryWidget extends StatelessWidget {
     this.scheduleEntry,
     this.onScheduleEntryTap,
   }) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
-    Color color = scheduleEntryTypeToColor(context, scheduleEntry.type);
+
+    Color color;
+
+    if (scheduleEntry.color != null && scheduleEntry.color.isNotEmpty) {
+      color = HexColor.fromHex(scheduleEntry.color);
+    }else{
+      color = scheduleEntryTypeToColor(context, scheduleEntry.type);
+    }
 
     return Card(
       color: color,

@@ -131,6 +131,7 @@ class RaplaParsingUtils {
 
     var title = "";
     var details = "";
+    var color = "";
 
     if (descriptionParts.length == 1) {
       title = descriptionParts[0];
@@ -146,6 +147,7 @@ class RaplaParsingUtils {
     ressources = _extractResources(value);
     professor = _extractProfessors(value);
     type = _extractEntryTypeFromCellTitle(title);
+    color = _extractColor(value);
 
     scheduleEntry = ScheduleEntry(
       start: start,
@@ -155,6 +157,7 @@ class RaplaParsingUtils {
       professor: professor,
       type: type,
       room: ressources,
+      color: color,
     );
     return scheduleEntry;
   }
@@ -224,6 +227,19 @@ class RaplaParsingUtils {
     }
 
     return concatStringList(personList, ",");
+  }
+
+  static String _extractColor(Element value){
+    var hasStyle = value.attributes.containsKey("style");
+    if (!hasStyle)return "";
+    var styleString = value.attributes["style"];
+    var styles = styleString.split(";");
+    for (var style in styles){
+      if(style.contains("background-color")){
+        return style.split(":")[1];
+      }
+    }
+    return "";
   }
 
   static String readYearOrThrow(Document document) {

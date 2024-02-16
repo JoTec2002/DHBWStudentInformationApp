@@ -135,6 +135,7 @@ class ScheduleProvider(private val context: Context) {
                 result.getString(result.getColumnIndex("professor")),
                 result.getString(result.getColumnIndex("room")),
                 result.getInt(result.getColumnIndex("type")),
+                result.getString(result.getColumnIndex("color")),
                 start,
                 end)
     }
@@ -149,7 +150,8 @@ class ScheduleProvider(private val context: Context) {
                 "ScheduleEntries.details,\n" +
                 "ScheduleEntries.professor,\n" +
                 "ScheduleEntries.room,\n" +
-                "ScheduleEntries.type\n" +
+                "ScheduleEntries.type,\n" +
+                "ScheduleEntries.color\n"+
                 "FROM \n" +
                 "    ScheduleEntries\n" +
                 "    LEFT JOIN ScheduleEntryFilters\n" +

@@ -16,6 +16,7 @@ class ScheduleEntry {
   final String professor;
   final String room;
   final ScheduleEntryType type;
+  final String color;
 
   ScheduleEntry({
     this.id,
@@ -26,6 +27,7 @@ class ScheduleEntry {
     this.professor,
     this.room,
     this.type,
+    this.color,
   });
 
   bool equalsWithIdIgnored(ScheduleEntry other) {
@@ -62,6 +64,9 @@ class ScheduleEntry {
     if (type != entry.type) {
       changedProperties.add("type");
     }
+    if(color != entry.color){
+      changedProperties.add("color");
+    }
 
     return changedProperties;
   }
@@ -73,7 +78,8 @@ class ScheduleEntry {
       String details,
       String professor,
       String room,
-      ScheduleEntryType type}) {
+      ScheduleEntryType type,
+      String color}) {
     return ScheduleEntry(
       id: id,
       start: start ?? this.start,
@@ -83,6 +89,7 @@ class ScheduleEntry {
       professor: professor ?? this.professor,
       room: room ?? this.room,
       type: type ?? this.type,
+      color: color ?? this.color,
     );
   }
 }

@@ -9,5 +9,6 @@ class ScheduleEntry(
         val professor: String,
         val room: String,
         val type: Int,
+        val color: String,
         val start: LocalDateTime,
         val end: LocalDateTime)

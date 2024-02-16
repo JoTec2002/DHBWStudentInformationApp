@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS ScheduleEntries
   details TEXT,
   professor TEXT,
   room TEXT,
-  type INTEGER
+  type INTEGER,
+  color TEXT
 );
 
 ''',

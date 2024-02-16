@@ -6,6 +6,8 @@ import 'package:dhbwstudentapp/schedule/model/schedule_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../common/ui/hex_color.dart';
+
 class DailyScheduleEntryWidget extends StatelessWidget {
   final ScheduleEntry scheduleEntry;
 
@@ -20,6 +22,14 @@ class DailyScheduleEntryWidget extends StatelessWidget {
 
     var startTime = timeFormatter.format(scheduleEntry.start);
     var endTime = timeFormatter.format(scheduleEntry.end);
+
+    Color color;
+
+    if (scheduleEntry.color != null && scheduleEntry.color.isNotEmpty) {
+      color = HexColor.fromHex(scheduleEntry.color);
+    }else{
+      color = scheduleEntryTypeToColor(context, scheduleEntry.type);
+    }
 
     return IntrinsicHeight(
       child: Row(
@@ -60,7 +70,7 @@ class DailyScheduleEntryWidget extends StatelessWidget {
             child: Card(
               margin: const EdgeInsets.all(0),
               elevation: 8,
-              color: scheduleEntryTypeToColor(context, scheduleEntry.type),
+              color: color,
               child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: Column(
