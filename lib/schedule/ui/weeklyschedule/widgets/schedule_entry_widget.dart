@@ -21,7 +21,9 @@ class ScheduleEntryWidget extends StatelessWidget {
 
     Color color;
 
-    if (scheduleEntry.color != null && scheduleEntry.color.isNotEmpty) {
+    if (scheduleEntry.type != ScheduleEntryType.Unknown) {
+      color = scheduleEntryTypeToColor(context, scheduleEntry.type);
+    }else if (scheduleEntry.color != null && scheduleEntry.color.isNotEmpty){
       color = HexColor.fromHex(scheduleEntry.color);
     }else{
       color = scheduleEntryTypeToColor(context, scheduleEntry.type);

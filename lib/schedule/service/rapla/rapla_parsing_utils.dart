@@ -29,6 +29,13 @@ class RaplaParsingUtils {
     "prüfung": ScheduleEntryType.Exam
   };
 
+  static const Map<String, ScheduleEntryType> entryColorTypeMapping = {
+    "#c0e2ff": ScheduleEntryType.Class,
+    "#eeeeee": ScheduleEntryType.Online,
+    "#b0cc54": ScheduleEntryType.PublicHoliday,
+    "#ff6666": ScheduleEntryType.Exam
+  };
+
   static ScheduleEntry extractScheduleEntryOrThrow(
       Element value, DateTime date) {
     // The tooltip tag contains the most relevant information
@@ -142,12 +149,15 @@ class RaplaParsingUtils {
 
     var professor = "";
     var ressources = "";
-    var type = ScheduleEntryType.Unknown;
 
     ressources = _extractResources(value);
     professor = _extractProfessors(value);
-    type = _extractEntryTypeFromCellTitle(title);
     color = _extractColor(value);
+
+    var type = _extractEntryTypeFromCellTitle(title);
+    if (type == ScheduleEntryType.Unknown){
+      type = _extractEntryTypeFromColor(color);
+    }
 
     scheduleEntry = ScheduleEntry(
       start: start,
@@ -173,6 +183,18 @@ class RaplaParsingUtils {
     var type = ScheduleEntryType.Unknown;
     if (entryTypeMapping.containsKey(typeString.toLowerCase())) {
       type = entryTypeMapping[typeString.toLowerCase()];
+    }
+
+    return type;
+  }
+
+  static ScheduleEntryType _extractEntryTypeFromColor(String color) {
+    if (color.isEmpty) return ScheduleEntryType.Unknown;
+
+    var type = ScheduleEntryType.Unknown;
+
+    if (entryColorTypeMapping.containsKey(color)){
+      type = entryColorTypeMapping[color];
     }
 
     return type;
